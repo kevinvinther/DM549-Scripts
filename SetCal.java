@@ -21,13 +21,8 @@ public class SetCal {
 	//Holds a list of sets so the user can ass as many sets as they want
 	private static ArrayList<HashSet<Integer>> sets = new ArrayList<HashSet<Integer>>();
 	
-	/*
-	 * The main has the user interface 
-	 */
-	public static void main(String[]args) {
-		init();
-		
-		System.out.println("1. Add a set. Works with the operators as well.");
+	private static void menu() {
+		System.out.println("1. Add a set.");
 		System.out.println("2. Add sets from file.");
 		System.out.println("3. Reset universe.");
 		System.out.println("4. Reset universe from file, and add sets from same file.");
@@ -36,10 +31,25 @@ public class SetCal {
 		System.out.println("7. Get the intersection of two sets.");
 		System.out.println("8. Get the difference of two sets.");
 		System.out.println("9. Get the inverse of a set.");
-		System.out.println("10. Print a already existing set.");
+		System.out.println("10. Print an already existing set.");
+		System.out.println("11. Print the last made set from an operator.");
+		System.out.println("12. Remember last made set from an operator.");
+		System.out.println("13. Prints the universe.");
+		System.out.println("14. Prints all the sets."); 
+		System.out.println("15. Prints the option menu.");
 		System.out.println("0. Exit.");
+	}
+	
+	/*
+	 * The main has the user interface 
+	 */
+	public static void main(String[]args) {
+		init();
 		
-		int choice = 0;
+		menu();
+		
+		int choice = 0, setNumber, set1Number, set2Number;
+		HashSet<Integer> lastMade = null;
 		do {
 			System.out.print("\nPlease enter an option: ");
 			choice = input.nextInt();
@@ -63,26 +73,113 @@ public class SetCal {
 				break;
 				
 				case 5: //Add elements to existing set
+					setNumber = 0;
+					do{
+						System.out.print("Please chose a set number (" + 1 + " to " + sets.size() + "): ");
+						setNumber = input.nextInt() - 1;
+					} while(setNumber < 0 || setNumber >= sets.size());
+					addElements(sets.get(setNumber) );
 				break;
 				
 				case 6: //Get the union of two sets
+					set1Number = 0;
+					set2Number = 0;
+					do{
+						System.out.print("Please chose a set number for the first set (" + 1 + " to " + sets.size() + "): ");
+						set1Number = input.nextInt() - 1;
+					} while(set1Number < 0 || set1Number >= sets.size() );
+					do{
+						System.out.print("Please chose a set number for the second set (" + 1 + " to " + sets.size() + "): ");
+						set2Number = input.nextInt() - 1;
+					} while(set2Number < 0 || set2Number >= sets.size());
 					
+					lastMade = union(sets.get(set1Number), sets.get(set2Number) );
 				break;
 				
 				case 7: //Get the intersection of two sets
+					set1Number = 0;
+					set2Number = 0;
+					do{
+						System.out.print("Please chose a set number for the first set (" + 1 + " to " + sets.size() + "): ");
+						set1Number = input.nextInt() - 1;
+					} while(set1Number < 0 || set1Number >= sets.size() );
+					do{
+						System.out.print("Please chose a set number for the second set (" + 1 + " to " + sets.size() + "): ");
+						set2Number = input.nextInt() - 1;
+					} while(set2Number < 0 || set2Number >= sets.size() );
 					
+					lastMade = intersection(sets.get(set1Number), sets.get(set2Number) );
 				break;
 				
 				case 8: //Get the difference of two sets
+					set1Number = 0; 
+					set2Number = 0;
+					do{
+						System.out.print("Please chose a set number for the first set (" + 1 + " to " + sets.size() + "): ");
+						set1Number = input.nextInt() - 1;
+					} while(set1Number < 0 || set1Number >= sets.size() );
+					do{
+						System.out.print("Please chose a set number for the second set (" + 1 + " to " + sets.size() + "): ");
+						set2Number = input.nextInt() - 1;
+					} while(set2Number < 0 || set2Number >= sets.size() );
 					
+					lastMade = difference(sets.get(set1Number), sets.get(set2Number) );
 				break;
 				
 				case 9: //Get the inverse of a set
+					setNumber = 0;
+					do{
+						System.out.print("Please chose a set number (" + 1 + " to " + sets.size() + "): ");
+						setNumber = input.nextInt() - 1;
+					} while(setNumber < 0 || setNumber >= sets.size() );
 					
+					lastMade = inverse(sets.get(setNumber) );
 				break;
 				
 				case 10: //Print a already existing set
+					setNumber = 0;
+					do{
+						System.out.print("Please chose a set number (" + 1 + " to " + sets.size() + "): ");
+						setNumber = input.nextInt() - 1;
+					} while(setNumber < 0 || setNumber >= sets.size() );
 					
+					printSet(sets.get(setNumber) );
+				break;
+				
+				case 11: //Print last made set
+					if(lastMade != null) {
+						printSet(lastMade);
+					}
+					else {
+						System.out.println("You need to run an operator function first");
+					}
+				break;
+				
+				case 12: //Remember set
+					if(lastMade != null) {
+						System.out.print("Set has been added: ");
+						printSet(lastMade);
+						rememberSet(lastMade);
+					}	
+					else {
+						System.out.println("You need to run an operator function first");
+					}
+				break;
+				
+				case 13: //Print universe
+					printSet(universe);
+				break;
+				
+				case 14: //Print all sets
+					int p = 1;
+					for(HashSet<Integer> set : sets) {
+						System.out.print(p++ + ". ");
+						printSet(set);
+					}
+				break;
+				
+				case 15: //Prints the options menu 
+					menu();
 				break;
 				
 				case 0:break; //Exit
@@ -92,6 +189,10 @@ public class SetCal {
 			}
 			
 		} while(choice != 0);
+	}
+	
+	private static void rememberSet(HashSet<Integer> set) {
+		sets.add(set);
 	}
 	
 	/*
@@ -110,6 +211,8 @@ public class SetCal {
 	private static void newUniverse() {
 		universe.clear();
 		sets.clear();
+		System.out.println("Enter all the elements separated by spaces: ");
+		input.nextLine(); //It tries to read something else otherwise
 		String[] universeStr = input.nextLine().trim().split(" ");
 		for(String element: universeStr) {
 			universe.add(Integer.parseInt(element) );
@@ -121,6 +224,8 @@ public class SetCal {
 	 * This also empties out all the old sets from sets 
 	 */
 	private static void newUniverseAndSetsFromFile() {
+		System.out.print("Enter the name of the file: ");
+		input.nextLine(); //It tries to read something else otherwise
 		String fileName = input.nextLine();
 		try{
 			FileReader file = new FileReader(fileName);
@@ -156,6 +261,8 @@ public class SetCal {
 	 */
 	private static void addSet() {
 		HashSet<Integer> set = new HashSet<Integer>();
+		System.out.println("Enter all the elements separated by spaces: ");
+		input.nextLine(); //It tries to read something else otherwise
 		String[] setStr = input.nextLine().trim().split(" ");
 		for(String element: setStr) {
 			//Only adds element contained in the universe 
@@ -170,6 +277,8 @@ public class SetCal {
 	 * Adds all the sets from a file to sets
 	 */
 	private static void addSetsFromFile() {
+		System.out.print("Enter the name of the file: ");
+		input.nextLine(); //It tries to read something else otherwise
 		String fileName = input.nextLine();
 		try{
 			FileReader file = new FileReader(fileName);
@@ -196,6 +305,8 @@ public class SetCal {
 	 * Adds an element to a set
 	 */
 	private static void addElements(HashSet<Integer> set) {
+		System.out.println("Enter all the elements separated by spaces: ");
+		input.nextLine(); //It tries to read something else otherwise
 		String[] setStr = input.nextLine().trim().split(" ");
 		for(String element: setStr) {
 			//Only adds element contained in the universe 
@@ -262,9 +373,16 @@ public class SetCal {
 	 * Prints all the elements of a set
 	 */
 	private static void printSet(HashSet<Integer> set) {
-		System.out.print("{ ");
+		System.out.print("{");
+		int i = 1;
 		for(int n : set) {
-			System.out.print(n + ", ");
+			
+			System.out.print(n);
+			
+			if(i != set.size() ) {
+				System.out.print(", ");
+			}
+			i = i + 1;
 		}
 		System.out.println("}");
 	}

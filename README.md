@@ -54,8 +54,24 @@ Work in progress
 
 Ikke helt sikker på hvad der skal være. Jeg tager gerne immod indput
 
-Status: Interfacet er ikke færdiget 
+Status: semi færdig
 
-Der er lige nu kun mugeligt at tilføje mængder og endre universet.
-Der mangler også forklaredne print statements  
+Det er muligt at:
+- Tilføje mængder 
+- Tilføje mængder fra en fil
+- Redefinere universet
+- Redefinere universet fra en fil, og tilføje mængder fra samme fil
+- Tilføje elementer til en allerede eksisterene fil
+- Lave sammensætningen af to mænger 
+- Lave fælesmængden af to mængder 
+- Lave en mænge fratrukket en anden mængde 
+- Lave en invers mængde 
+- Printe en allerede exsisterende mængde 
+- Printe en mænge skabt af en operator 
+- Tilføje en mænge skabt af en operator 
+- Printe universet 
+- Printe alle mængder 
+- Printe menuen igen 
+
+Jeg tager gerne immod ideer til hvis der mangler noget
 _____________________________
