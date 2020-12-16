@@ -32,3 +32,19 @@ ______________________________
 # kongruens calc
 
 # matrix multiplication calc
+
+_____________________________
+@ William Bundgaard 
+# RSAChecker 
+Tjekker for gangbare RSA nøgler og modulo,
+og hjælper med at kryptere og dekryptere.
+
+Skrevet i java: RSAChecker.java
+
+Status:
+Ikke færdig 
+
+Den er nu i stand til at tjekke om en RSA er brugbar
+
+Jeg holder denne fil opdateret
+_____________________________
