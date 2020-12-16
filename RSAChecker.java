@@ -1,4 +1,6 @@
 /*
+ * This document was written by William Bundgaard
+ * 
  * This code helps use and check RSA - public key system 
  */
 
@@ -16,6 +18,8 @@ public class RSAChecker {
 	
 	private static int p, q; //the primes composing modulo
 	
+	private static int msg = -1; //empty message
+	
 	/*
 	 * Main contains the user interface 
 	 */
@@ -24,6 +28,51 @@ public class RSAChecker {
 		boolean usable = valid();
 		System.out.println("\nThe RSA is " + (usable ? "" : "not ") + "usable");
 		
+		if(usable) {
+			System.out.println("\n1. Insert a new message.");
+			System.out.println("2. Encrypt/decrypt message using private key.");
+			System.out.println("3. Encrypt/decrypt message using public key.");
+			System.out.println("0. Exit system");
+		}
+		
+		int choice = 1;
+		while(usable && choice != 0) {
+			System.out.print("\nPlease enter the number of the method you would like to use: ");
+			choice = input.nextInt();
+			switch(choice) {
+				case 1:
+					System.out.print("Please enter a message (as a positive integer): ");
+					msg = input.nextInt();
+				break;
+				
+				case 2:
+				if(msg == -1) {
+					System.out.println("You must first insert a message");
+				}
+				else {
+					msg = exp(msg, privateKey, modulo);
+					System.out.println("New message = " + msg);
+				}
+				break;
+				
+				case 3:
+					if(msg == -1) {
+					System.out.println("You must first insert a message");
+				}
+				else {
+					msg = exp(msg, publicKey, modulo);
+					System.out.println("New message = " + msg);
+				}
+				break;
+				
+				case 0: break;
+				
+				default:
+				System.out.println(choice + " is not a valid option.");
+			}
+		}
+		
+		System.out.println("\nRSAChecker has terminated");
 	}
 	
 	/*
@@ -102,17 +151,24 @@ public class RSAChecker {
 	}
 	
 	/*
-	 * Encrypts / decrypts message using private key
+	 * Encrypts / decrypts message using k key
+	 * 
+	 * Computes a^k (mod n)
 	 */
-	private static int encrypt(int msg) {
-		return 0;
-	}
-	
-	/*
-	 * Encrypts / decrypts message using public key
-	 */
-	private static int decrypt(int msg) {
-		return 0;
+	private static int exp(int a, int k, int n) {
+		if(k <= 0) {
+			return 1;
+		}
+		if(k == 1) {
+			return a % n;
+		}
+		if(k % 2 == 1) { //If k is odd
+			return (a * exp(a,k-1,n) ) % n;
+		}
+		else { //If k is even
+			int c = exp(a,k/2,n);
+			return (c*c) % n;
+		}
 	}
 	
 }
