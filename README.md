@@ -25,8 +25,6 @@ ______________________________
 
 # udsagn calc
 
-# mængde calc
-
 # relation på mængder
 
 # kongruens calc
@@ -49,4 +47,15 @@ _____________________________
 - Den har et simpelt user interface, og kan kryptere og dekryptere besker insat af brugeren. 
 
 - Hvis RSAen ikke er gyldig, afslutter den automatisk selv systemet.
+
+# mængde calc
+
+Work in progress
+
+Ikke helt sikker på hvad der skal være. Jeg tager gerne immod indput
+
+Status: Interfacet er ikke færdiget 
+
+Der er lige nu kun mugeligt at tilføje mængder og endre universet.
+Der mangler også forklaredne print statements  
 _____________________________
