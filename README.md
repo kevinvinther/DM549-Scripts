@@ -36,17 +36,17 @@ ______________________________
 _____________________________
 @ William Bundgaard 
 # RSAChecker 
-Tjekker for gangbare RSA nøgler og modulo,
-og hjælper med at kryptere og dekryptere.
-(Dette kan ikke bruges i DM549, men den var sjov at lave)
+- Tjekker for gangbare RSA nøgler og modulo, og hjælper med at kryptere og dekryptere.
 
-Skrevet i java: RSAChecker.java
+- Dette kan ikke bruges i DM549, men den var sjov at lave
 
-Status:
-færdig 
+- Skrevet i java: RSAChecker.java
 
-Den kan tjekke om en RSA er vallid
-Den har et simpelt user interface, og kan kryptere og dekryptere 
-besker insat af brugeren. 
-Hvis RSAen ikke er gyldig, afslutter den automatisk selv systemet.
+- Status: færdig 
+
+- Den kan tjekke om en RSA er vallid
+
+- Den har et simpelt user interface, og kan kryptere og dekryptere besker insat af brugeren. 
+
+- Hvis RSAen ikke er gyldig, afslutter den automatisk selv systemet.
 _____________________________
