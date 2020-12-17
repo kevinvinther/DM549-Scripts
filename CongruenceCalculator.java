@@ -1,4 +1,6 @@
 import	java.util.Scanner;
+import 	java.util.ArrayList;
+import	java.util.Arrays;
 import 	java.lang.Math;
 
 public class CongruenceCalculator{
@@ -6,35 +8,33 @@ public class CongruenceCalculator{
 	public static void main(String[]args){
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println();
-		//introduktion til regnemaskinen her:
-		/*System.out.println("  .-O  VELKOMMEN TIL DEN LILLE KONGRUENS-REGNEMASKINE  O-.\n" +
-						   "  ---------------------------------------------------------\n" +
-						   "   maskinen regner problemer ud fra formlen er a kongruent |\n" +
-						   "   med b modulo \"modulus\" og returnerer true eller false.. |\n"+
-						   "  ---------------------------------------------------------\n");*/
-		
-		System.out.print("Hvilke tal er kongruente med a modulo b:\n"+
-						"indtast a: ");
-		int a = sc.nextInt();
-		System.out.print("indtast b: ");
-		int b = sc.nextInt();
-		System.out.print("Output fra: ");
-		int min = sc.nextInt();					//precondition: min er mindre end max.
-		System.out.print("til: ");
-		int max = sc.nextInt();
+	
+		//Test:
+		System.out.println(Arrays.toString(congruenceArray(17,5,-40,40)));
+		System.out.println(isCongruent(4, 1024, 6));
+	}
+	
+	/*
+	* returns an array of all integers that are congruent to a modulo b - in the range from min to max
+	* precondition: min is a smaller number than max.
+	*/
+	private static Integer[] congruenceArray(int a, int b, int min, int max){
 		int result = Math.floorMod(a, b);
-		System.out.print("[");
+		ArrayList<Integer> tempList = new ArrayList<Integer>();
 		for(int i = min; i < max; i++){
 			if(Math.floorMod(i, b) == result){
-				System.out.print(i+"][");
+				tempList.add(i);
 			}
 		}
-		System.out.println("]");
+		Integer[] congruenceArray = new Integer[tempList.size()];
+		congruenceArray = tempList.toArray(congruenceArray);
+		return congruenceArray;
 	}
 	
+	/*
+	* returns true if a is congruent to b modulo m
+	*/
 	private static boolean isCongruent(int a, int b, int modulus){
 		return Math.floorMod(a, modulus) == Math.floorMod(b, modulus) ? true : false;
-	}
-	
+	}	
 }
