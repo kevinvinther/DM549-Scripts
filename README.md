@@ -34,10 +34,10 @@ ______________________________
  programmet beder om input fra brugeren ved hjælp af popups fra javax.swing.JOptionPane
  Printer svar i kommandoprompten.
  
- congruenceArray(int a, int m, int min, int max)
+ - congruenceArray(int a, int m, int min, int max)
  returnerer et array af tal der er kongruente med a modulo m
  
- isCongruence(int a, int b, int modulus)
+ - isCongruence(int a, int b, int modulus)
  returnerer boolsk værdi hvis a er kongruent med b modulo modulus
  
 # matrix multiplication calc
