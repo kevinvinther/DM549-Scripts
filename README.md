@@ -32,6 +32,7 @@ ______________________________
  CongruenceCalculator.java:
 
  programmet beder om input fra brugeren ved hjælp af popups fra javax.swing.JOptionPane
+ 
  Printer svar i kommandoprompten.
  
  - congruenceArray(int a, int m, int min, int max)
