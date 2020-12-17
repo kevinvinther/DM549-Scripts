@@ -78,6 +78,9 @@ Det er muligt at:
 - Printe universet 
 - Printe alle mængder 
 - Printe menuen igen 
+- Endre det univers den benytter sig af (mellem integers og strenge) 
 
 Jeg tager gerne immod ideer til hvis der mangler noget
+
+UPDATE: Det er nu muligt at bruge strenge til universet ved at mappe tal til strenge. Dette kan rettes i filen "intToCharMap.txt" hvis man ønsker at endre denne mapping. (Dette er den bedste måde at ender universet på. Lige nu bruger den det enelske alfabet som stenge universet, og dertil alle tallene fra 1 til 26)
 _____________________________
