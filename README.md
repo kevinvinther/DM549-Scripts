@@ -32,7 +32,7 @@ ______________________________
  CongruenceCalculator.java:
 
  programmet beder om input fra brugeren ved hjælp af popups fra javax.swing.JOptionPane
- printer svar i kommandoprompten.
+ Printer svar i kommandoprompten.
  
  congruenceArray(int a, int m, int min, int max)
  returnerer et array af tal der er kongruente med a modulo m
