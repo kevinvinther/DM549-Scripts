@@ -28,6 +28,12 @@ ______________________________
 # relation på mængder
 
 # kongruens calc
+ 
+ CongruenceCalculator.java:
+ 
+ prompter brugeren for input til at et problem ud fra formlen "hvilke tal er kongruente med a modulo b"
+ input er a og b og hvilken "rækkevidde" arrayet skal printes ud i.
+ ind til videre ligger ovenstående i main, og så er der en boolean metode der kan svare om a er kongruent med modulo m.
 
 # matrix multiplication calc
 
