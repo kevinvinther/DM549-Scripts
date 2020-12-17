@@ -30,11 +30,17 @@ ______________________________
 # kongruens calc
  
  CongruenceCalculator.java:
- 
- prompter brugeren for input til at et problem ud fra formlen "hvilke tal er kongruente med a modulo b"
- input er a og b og hvilken "rækkevidde" arrayet skal printes ud i.
- ind til videre ligger ovenstående i main, og så er der en boolean metode der kan svare om a er kongruent med modulo m.
 
+ prompter brugeren for input til at et problem ud fra formlen "hvilke tal er kongruente med a modulo b"
+ congruenceArray(int a, int m, int min, int max)
+ returnerer et array af tal der er kongruente med a modulo m
+ 
+ isCongruence(int a, int b, int modulus)
+ returnerer boolsk værdi hvis a er kongruent med b modulo modulus
+ 
+ programmet beder om input fra brugeren ved hjælp af popups fra javax.swing.JOptionPane
+ men printer svar i kommandoprompten.
+ 
 # matrix multiplication calc
 
 _____________________________
