@@ -4,6 +4,7 @@
  * This code helps use and check RSA - public key system 
  */
 
+ //To get user input 
 import java.util.Scanner;
 
 public class RSAChecker {
